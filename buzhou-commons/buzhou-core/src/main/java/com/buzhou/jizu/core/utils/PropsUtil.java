@@ -20,16 +20,28 @@ public class PropsUtil {
 
     /**
      * 从Properties对象中获取指定键的值，如果值不存在或为空则返回默认值
-     * @param props Properties对象
-     * @param key 要获取的属性键
+     *
+     * @param props        Properties对象
+     * @param key          要获取的属性键
      * @param defaultValue 默认值
+     * @param <T>          泛型类型参数
      * @return 属性值或默认值
      */
-    public static String getProps(Properties props, String key, String defaultValue) {
-        // 只有当value不为空时才设置属性值
+    public static <T> T getProps(Properties props, String key, T defaultValue) {
         String value = props.getProperty(key);
         if (!FuncUtil.isEmpty(value)) {
-            return value;
+            value = value.trim();
+            if (defaultValue instanceof Integer) {
+                return (T) Integer.valueOf(value);
+            } else if (defaultValue instanceof Long) {
+                return (T) Long.valueOf(value);
+            } else if (defaultValue instanceof Boolean) {
+                return (T) Boolean.valueOf(value);
+            } else if (defaultValue instanceof Double) {
+                return (T) Double.valueOf(value);
+            } else {
+                return (T) value;
+            }
         }
         return defaultValue;
     }

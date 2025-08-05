@@ -17,4 +17,9 @@ public interface AppConstant {
      * 测试环境
      */
     String TEST_CODE = "test";
+
+    /**
+     * 代码部署于 linux 上，工作默认为 mac 和 Windows
+     */
+    String OS_NAME_LINUX = "LINUX";
 }

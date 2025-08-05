@@ -99,7 +99,9 @@ public class BuzhouApplication {
         PropsUtil.seProps(props, "info.desc", applicationName);
         PropsUtil.seProps(props, "buzhou.env", profile);
         PropsUtil.seProps(props, "buzhou.name", applicationName);
+        PropsUtil.seProps(props, "blade.is-local", String.valueOf(isLocalDev()));
         PropsUtil.seProps(props, "buzhou.dev-mode", profile.equals(AppConstant.PROD_CODE) ? "false" : "true");
+        PropsUtil.seProps(props, "spring.main.allow-bean-definition-overriding", "true");
         PropsUtil.seProps(props, "buzhou.service.version", AppConstant.APPLICATION_VERSION);
         // 加载自定义组件
         List<LauncherService> launcherList = new ArrayList<>();
@@ -108,6 +110,16 @@ public class BuzhouApplication {
         launcherList.stream().sorted(Comparator.comparing(LauncherService::getOrder)).collect(Collectors.toList())
                 .forEach(launcherService -> launcherService.launcher(finalBuilder, appName, profile));
         return finalBuilder;
+    }
+
+    /**
+     * 判断是否为本地开发环境
+     *
+     * @return boolean
+     */
+    public static boolean isLocalDev() {
+        String osName = System.getProperty("os.name");
+        return StringUtils.hasText(osName) && !(AppConstant.OS_NAME_LINUX.equalsIgnoreCase(osName));
     }
 
 }
