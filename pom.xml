@@ -8,6 +8,9 @@
     <artifactId>buzhou-dependencies</artifactId>
     <packaging>pom</packaging>
     <name>buzhou-dependencies</name>
+    <modules>
+        <module>buzhou-commons</module>
+    </modules>
     <version>${revision}</version>
     <description>
         BuZhou - 不周山
@@ -28,6 +31,7 @@
         <spring.cloud.alibaba.version>2021.0.6.2</spring.cloud.alibaba.version>
         <!-- 插件版本属性 -->
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <!-- 其它依赖 -->
         <lombok.version>1.18.38</lombok.version>
@@ -82,12 +86,62 @@
     </dependencyManagement>
 
     <build>
+        <finalName>${project.name}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring.boot.version}</version>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- jar -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <!-- 生成 INDEX.LIST -->
+                            <index>true</index>
+                            <!-- MANIFEST.MF 多生成一些描述信息 -->
+                            <manifest>
+                                <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
+                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                            <!-- 自动模块名，方便模块化导入 -->
+                            <manifestEntries>
+                                <Automatic-Module-Name>${project.build.finalName}</Automatic-Module-Name>
+                            </manifestEntries>
+                            <!-- 生成的jar中，不要包含pom.xml和pom.properties这两个文件 -->
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                    <!-- 若模块化编译报错可切换此版本 -->
+                    <!--<version>2.10.1</version>-->
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -97,6 +151,9 @@
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                         <encoding>${project.build.sourceEncoding}</encoding>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.projectlombok</groupId>
