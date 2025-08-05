@@ -34,9 +34,22 @@
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
         <!-- 其它依赖 -->
         <lombok.version>1.18.38</lombok.version>
         <mica.version>2.7.18.9</mica.version>
+        <commons.io.version>2.19.0</commons.io.version>
+        <file-upload.version>1.6.0</file-upload.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
+        <jackson-core.version>2.15.0</jackson-core.version>
+        <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
+        <guava.version>33.4.8-jre</guava.version>
+        <!-- 修复依赖 -->
+        <snakeyaml.version>2.0</snakeyaml.version>
+        <bcprov-jdk18on.version>1.78</bcprov-jdk18on.version>
+        <tomcat.version>9.0.106</tomcat.version>
+        <logback.version>1.2.13</logback.version>
+        <jsonpath.version>2.9.0</jsonpath.version>
     </properties>
 
     <dependencyManagement>
@@ -82,6 +95,81 @@
                 <version>${mica.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable-thread-local.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${file-upload.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bcprov-jdk18on.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-el</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-websocket</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${jsonpath.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -170,5 +258,23 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${flatten-maven-plugin.version}</version>
+                <configuration>
+                    <flattenMode>oss</flattenMode>
+                    <updatePomFile>true</updatePomFile>
+                    <pomElements>
+                        <dependencyManagement>expand</dependencyManagement>
+                        <pluginManagement>remove</pluginManagement>
+                        <dependencies>remove</dependencies>
+                        <properties>remove</properties>
+                        <repositories>remove</repositories>
+                    </pomElements>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
