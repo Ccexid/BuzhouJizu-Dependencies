@@ -19,6 +19,7 @@
 
     <properties>
         <revision>1.0.0-jdk8</revision>
+        <module.name>com.buzhou.jizu</module.name>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -86,7 +87,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>${project.name}</finalName>
+        <finalName>${module.name}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>

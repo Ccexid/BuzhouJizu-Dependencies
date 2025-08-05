@@ -10,6 +10,9 @@
     <artifactId>buzhou-commons</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-    <description>通用组件</description>
-    <name>buzhou-commons</name>
+    <description>${project.artifactId}-通用模块</description>
+    <modules>
+        <module>buzhou-core</module>
+    </modules>
+    <name>${project.artifactId}</name>
 </project>
