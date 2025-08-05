@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.buzhou.jizu</groupId>
-    <artifactId>buzhou-dependencies</artifactId>
+    <groupId>com.weakwater.framework</groupId>
+    <artifactId>weakwater-dependencies</artifactId>
     <packaging>pom</packaging>
-    <name>buzhou-dependencies</name>
+    <name>weakwater-dependencies</name>
     <modules>
-        <module>buzhou-commons</module>
+        <module>weakwater-commons</module>
     </modules>
     <version>${revision}</version>
     <description>
@@ -19,7 +19,7 @@
 
     <properties>
         <revision>1.0.0-jdk8</revision>
-        <module.name>com.buzhou.jizu</module.name>
+        <module.name>com.weakwater.framework</module.name>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>

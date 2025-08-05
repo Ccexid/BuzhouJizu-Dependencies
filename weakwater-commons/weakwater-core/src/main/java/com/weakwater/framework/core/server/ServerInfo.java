@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.buzhou.jizu.core.server;
+package com.weakwater.framework.core.server;
 
-import com.buzhou.jizu.core.utils.NetUtil;
+import com.weakwater.framework.core.utils.NetUtil;
 import lombok.Getter;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
-package com.buzhou.jizu.core;
+package com.weakwater.framework.core;
 
-import com.buzhou.jizu.core.constant.AppConstant;
-import com.buzhou.jizu.core.service.LauncherService;
-import com.buzhou.jizu.core.utils.PropsUtil;
+import com.weakwater.framework.core.constant.AppConstant;
+import com.weakwater.framework.core.service.LauncherService;
+import com.weakwater.framework.core.utils.PropsUtil;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.*;
@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class BuzhouApplication {
+public class WeakWaterApplication {
     /**
      * 运行Spring应用程序并返回应用上下文
      *
@@ -85,7 +85,7 @@ public class BuzhouApplication {
             // 同时存在dev、test、prod环境时
             throw new RuntimeException("同时存在环境变量:[" + StringUtils.arrayToCommaDelimitedString(activeProfiles) + "]");
         }
-        String startJarPath = Objects.requireNonNull(BuzhouApplication.class.getResource("/")).getPath().split("!")[0];
+        String startJarPath = Objects.requireNonNull(WeakWaterApplication.class.getResource("/")).getPath().split("!")[0];
         String activePros = joinFun.apply(activeProfileList.toArray());
         System.out.printf("----启动中，读取到的环境变量:[%s]，jar地址:[%s]----%n", activePros, startJarPath);
         // 获取系统属性

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.buzhou.jizu.core.props;
+package com.weakwater.framework.core.props;
 
 import org.springframework.core.Ordered;
 
@@ -28,7 +28,7 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BuzhouPropertySource {
+public @interface WeakWaterPropertySource {
 
 	/**
 	 * Indicate the resource location(s) of the properties file to be loaded.

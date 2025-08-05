@@ -1,6 +1,6 @@
-package com.buzhou.jizu.core.props;
+package com.weakwater.framework.core.props;
 
-import com.buzhou.jizu.core.utils.PropsUtil;
+import com.weakwater.framework.core.utils.PropsUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,8 +12,8 @@ import org.springframework.lang.Nullable;
 import java.util.Objects;
 import java.util.Properties;
 
-@ConfigurationProperties("buzhou")
-public class BuzhouProperties implements EnvironmentAware, EnvironmentCapable {
+@ConfigurationProperties("weak-water")
+public class WeakWaterProperties implements EnvironmentAware, EnvironmentCapable {
 
     private Environment environment;
 

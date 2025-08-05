@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.buzhou.jizu.core.props;
+package com.weakwater.framework.core.props;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -47,11 +47,11 @@ import java.util.stream.Collectors;
  * @author L.cm
  */
 @Slf4j
-public class BuzhouPropertySourcePostProcessor implements BeanFactoryPostProcessor, InitializingBean, Ordered {
+public class WeakWaterPropertySourcePostProcessor implements BeanFactoryPostProcessor, InitializingBean, Ordered {
 	private final ResourceLoader resourceLoader;
 	private final List<PropertySourceLoader> propertySourceLoaders;
 
-	public BuzhouPropertySourcePostProcessor() {
+	public WeakWaterPropertySourcePostProcessor() {
 		this.resourceLoader = new DefaultResourceLoader();
 		this.propertySourceLoaders = SpringFactoriesLoader.loadFactories(PropertySourceLoader.class, getClass().getClassLoader());
 	}
@@ -59,7 +59,7 @@ public class BuzhouPropertySourcePostProcessor implements BeanFactoryPostProcess
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
 		log.info("BladePropertySourcePostProcessor process @BladePropertySource bean.");
-		Map<String, Object> beansWithAnnotation = beanFactory.getBeansWithAnnotation(BuzhouPropertySource.class);
+		Map<String, Object> beansWithAnnotation = beanFactory.getBeansWithAnnotation(WeakWaterPropertySource.class);
 		Set<Map.Entry<String, Object>> beanEntrySet = beansWithAnnotation.entrySet();
 		// 没有 @YmlPropertySource 注解，跳出
 		if (beanEntrySet.isEmpty()) {
@@ -70,7 +70,7 @@ public class BuzhouPropertySourcePostProcessor implements BeanFactoryPostProcess
 		List<PropertyFile> propertyFileList = new ArrayList<>();
 		for (Map.Entry<String, Object> entry : beanEntrySet) {
 			Class<?> beanClass = ClassUtils.getUserClass(entry.getValue());
-			BuzhouPropertySource propertySource = AnnotationUtils.getAnnotation(beanClass, BuzhouPropertySource.class);
+			WeakWaterPropertySource propertySource = AnnotationUtils.getAnnotation(beanClass, WeakWaterPropertySource.class);
 			if (propertySource == null) {
 				continue;
 			}

@@ -1,4 +1,4 @@
-package com.buzhou.jizu.core;
+package com.weakwater.framework.core;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

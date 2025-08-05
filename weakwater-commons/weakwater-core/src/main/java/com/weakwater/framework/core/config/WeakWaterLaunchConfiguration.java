@@ -1,6 +1,6 @@
-package com.buzhou.jizu.core.config;
+package com.weakwater.framework.core.config;
 
-import com.buzhou.jizu.core.props.BuzhouProperties;
+import com.weakwater.framework.core.props.WeakWaterProperties;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -24,8 +24,8 @@ import org.springframework.core.annotation.Order;
 @AllArgsConstructor
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @EnableConfigurationProperties({
-        BuzhouProperties.class
+        WeakWaterProperties.class
 })
-public class BuzhouLaunchConfiguration {
+public class WeakWaterLaunchConfiguration {
 }
 

@@ -1,4 +1,4 @@
-package com.buzhou.jizu.core.utils;
+package com.weakwater.framework.core.utils;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

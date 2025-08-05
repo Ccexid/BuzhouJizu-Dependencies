@@ -1,4 +1,4 @@
-package com.buzhou.jizu.core.constant;
+package com.weakwater.framework.core.constant;
 
 public interface AppConstant {
     /**

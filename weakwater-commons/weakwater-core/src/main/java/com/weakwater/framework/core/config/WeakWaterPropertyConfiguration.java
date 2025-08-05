@@ -1,6 +1,6 @@
-package com.buzhou.jizu.core.config;
+package com.weakwater.framework.core.config;
 
-import com.buzhou.jizu.core.props.BuzhouProperties;
+import com.weakwater.framework.core.props.WeakWaterProperties;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.Ordered;
@@ -8,6 +8,6 @@ import org.springframework.core.annotation.Order;
 
 @AutoConfiguration
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@EnableConfigurationProperties(BuzhouProperties.class)
-public class BuzhouPropertyConfiguration {
+@EnableConfigurationProperties(WeakWaterProperties.class)
+public class WeakWaterPropertyConfiguration {
 }
