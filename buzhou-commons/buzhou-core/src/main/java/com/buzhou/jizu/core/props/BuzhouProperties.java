@@ -68,6 +68,63 @@ public class BuzhouProperties implements EnvironmentAware, EnvironmentCapable {
         return PropsUtil.getProps(prop, key, defaultValue);
     }
 
+    /**
+     * 获取配置
+     *
+     * @param key key
+     * @return value
+     */
+    @Nullable
+    public String getString(String key) {
+        return get(key, null);
+    }
+
+    /**
+     * 获取配置
+     *
+     * @param key key
+     * @return int value
+     */
+    @Nullable
+    public Integer getInt(String key) {
+        return get(key, null);
+    }
+
+
+    /**
+     * 获取配置
+     *
+     * @param key key
+     * @return long value
+     */
+    @Nullable
+    public Long getLong(String key) {
+        return get(key, null);
+    }
+
+
+    /**
+     * 获取配置
+     *
+     * @param key key
+     * @return Boolean value
+     */
+    @Nullable
+    public Boolean getBoolean(String key) {
+        return get(key, null);
+    }
+
+    /**
+     * 获取配置
+     *
+     * @param key key
+     * @return double value
+     */
+    @Nullable
+    public Double getDouble(String key) {
+        return get(key, null);
+    }
+
 
     /**
      * 判断是否存在key
