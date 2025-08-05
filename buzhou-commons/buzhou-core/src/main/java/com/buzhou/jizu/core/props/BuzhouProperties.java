@@ -42,22 +42,32 @@ public class BuzhouProperties implements EnvironmentAware, EnvironmentCapable {
     @Getter
     private final Properties prop = new Properties();
 
+    /**
+     * 根据指定的键获取对应的值
+     *
+     * @param <T> 泛型类型参数，表示返回值的类型
+     * @param key 要获取值的键，不能为空
+     * @return 返回与键关联的值，如果键不存在或值为null则返回null
+     */
     @Nullable
     public <T> T get(String key) {
         return get(key, null);
     }
 
+
     /**
-     * 获取配置
+     * 根据指定的键获取属性值，如果键不存在则返回默认值
      *
-     * @param key          key
-     * @param defaultValue 默认值
-     * @return value
+     * @param <T>          泛型类型参数，表示返回值的类型
+     * @param key          属性键，用于查找对应的属性值
+     * @param defaultValue 默认值，当指定键不存在时返回此值
+     * @return 返回指定键对应的属性值，如果键不存在则返回默认值
      */
     @Nullable
     public <T> T get(String key, @Nullable T defaultValue) {
         return PropsUtil.getProps(prop, key, defaultValue);
     }
+
 
     /**
      * 判断是否存在key
