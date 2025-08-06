@@ -1,6 +1,8 @@
 package com.weakwater.framework.core.utils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.lang.Nullable;
+import org.springframework.util.ObjectUtils;
 
 public class FuncUtil {
 
@@ -12,7 +14,7 @@ public class FuncUtil {
      * @param defaultValue 默认值
      * @return 当val为null时返回defaultValue，否则返回val本身
      */
-    public static <T> T nvl(T val, T defaultValue) {
+    public static <T> T nvl(T val, @Nullable T defaultValue) {
         return val == null ? defaultValue : val;
     }
 
@@ -25,5 +27,17 @@ public class FuncUtil {
     public static boolean isEmpty(String obj) {
         return StringUtils.isEmpty(obj);
     }
+
+
+    /**
+     * 判断对象是否不为空
+     *
+     * @param obj 待判断的对象，可以为null
+     * @return 如果对象不为空则返回true，否则返回false
+     */
+    public static boolean isNotEmpty(@Nullable Object obj) {
+        return !ObjectUtils.isEmpty(obj);
+    }
+
 
 }
