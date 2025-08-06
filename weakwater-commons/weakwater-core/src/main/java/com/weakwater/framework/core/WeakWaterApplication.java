@@ -119,7 +119,7 @@ public class WeakWaterApplication {
      */
     public static boolean isLocalDev() {
         String osName = System.getProperty("os.name");
-        return StringUtils.hasText(osName) && !(AppConstant.OS_NAME_LINUX.equalsIgnoreCase(osName));
+        return StringUtils.hasText(osName) && !(AppConstant.OS_LINUX_CODE.equalsIgnoreCase(osName));
     }
 
 }
