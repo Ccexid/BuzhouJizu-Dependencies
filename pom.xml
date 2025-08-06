@@ -37,7 +37,7 @@
         <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
         <!-- 其它依赖 -->
         <lombok.version>1.18.38</lombok.version>
-        <mica.version>2.7.18.9</mica.version>
+        <mica-auto.version>2.3.5</mica-auto.version>
         <commons.io.version>2.19.0</commons.io.version>
         <file-upload.version>1.6.0</file-upload.version>
         <commons-lang3.version>3.18.0</commons-lang3.version>
@@ -91,10 +91,8 @@
             </dependency>
             <dependency>
                 <groupId>net.dreamlu</groupId>
-                <artifactId>mica-bom</artifactId>
-                <version>${mica.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <artifactId>mica-auto</artifactId>
+                <version>${mica-auto.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -252,6 +250,7 @@
                             <path>
                                 <groupId>net.dreamlu</groupId>
                                 <artifactId>mica-auto</artifactId>
+                                <version>${mica-auto.version}</version>
                             </path>
                         </annotationProcessorPaths>
                     </configuration>
